@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.neusoft.nees.widget"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="13"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.neusoft.nees.common.MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.neusoft.nees.widget.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" 
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.neusoft.nees.widget.BrowseActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/StyledIndicators" 
+            android:launchMode="singleTask" 
+            >
+        </activity>
+        <!--<activity
+            android:name="com.neusoft.nees.widget.PhotoTakeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+            android:launchMode="singleTask" >
+        </activity>-->
+        <activity
+            android:name="com.neusoft.nees.widget.SignActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+            android:launchMode="singleTask" >
+        </activity>
+        
+         <activity
+            android:name="com.neusoft.nees.widget.TakePhotoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+            android:launchMode="singleTask" >
+        </activity>
+ 		<activity
+            android:name="com.neusoft.nees.widget.CameraActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+            >
+        </activity>
+        <activity
+            android:name="com.neusoft.nees.widget.PhotoDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" 
+           >
+        </activity>
+       <activity android:name="com.neusoft.nees.widget.SuggestActivity"
+             android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+        
+        <receiver android:name="com.neusoft.nees.common.BootBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="nees.signName" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="nees.takePhoto" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.neusoft.nees.common.MainService" >
+            <intent-filter>
+                <action android:name="com.neusoft.nees.common.MainService" >
+                </action>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

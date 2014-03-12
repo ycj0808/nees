@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="datas">
+        <item>不满意</item>
+        <item>一般</item>
+        <item>满意</item>
+        <item>非常满意</item>
+    </string-array>
+</resources>

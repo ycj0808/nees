@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_hor1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!--<LinearLayout
+        android:id="@+id/layout_hor2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:visibility="gone">
+
+        <ListView
+            android:id="@+id/listView_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+        </ListView>
+    </LinearLayout>  -->
+
+    <LinearLayout
+        android:id="@+id/layout_hor3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:layout_above="@+id/layout_hor4">
+        <it.sephiroth.android.library.imagezoom.ImageViewTouch
+            android:id="@+id/img_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+    </LinearLayout>
+	<LinearLayout 
+	    android:id="@+id/layout_hor4"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true">
+	    <Gallery android:id="@+id/gallery"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"/>
+	</LinearLayout>
+</RelativeLayout>

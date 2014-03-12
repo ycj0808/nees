@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/layout_hor1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/adPagers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_hor2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <!--<LinearLayout
+            android:id="@+id/layout_ver1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5" >
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/img_signname"
+                android:scaleType="fitCenter" />
+        </LinearLayout>  -->
+
+        <RelativeLayout
+            android:id="@+id/layout_ver2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/layout_ver3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/line"
+                    android:text="@string/tip_sign"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_ver4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" 
+                android:layout_above="@+id/layout_ver5"
+                android:layout_below="@+id/layout_ver3">
+                
+            </LinearLayout>
+           <LinearLayout android:id="@+id/layout_ver5"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:layout_marginBottom="8dp"
+               android:layout_marginTop="3dp"
+               android:orientation="horizontal">
+               <Button 
+                   android:id="@+id/btn_save"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:layout_marginRight="15dp"
+                   android:layout_marginLeft="10dp"
+                   android:text="@string/save"
+                   android:textColor="@color/white"
+                   style="?android:attr/buttonBarButtonStyle"
+                   android:textSize="24sp"
+                   android:background="@drawable/btn_save_bg"/>
+               <Button 
+                   android:id="@+id/btn_cancel"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginLeft="15dp"
+                   android:text="@string/clean"
+                   android:textColor="@color/white"
+                   style="?android:attr/buttonBarButtonStyle"
+                   android:textSize="24sp"
+                   android:background="@drawable/btn_cancel_bg"/>
+           </LinearLayout> 
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

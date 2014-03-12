@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">数字化处理</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="img_signname">签名图片</string>
+    <string name="tip_sign">请在下面区域签名：</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="clean">清除</string>
+    <string name="brower_report">浏览受理单和协议</string>
+    <string name="brower_treaty">浏览协议</string>
+    <string name="tip_photo">照片</string>
+    <string name="take_photo">拍照</string>
+    <string name="submit">提交</string>
+    <string name="suggest_title">满意度调查</string>
+    <string name="menu_delete">删除</string>
+    <string name="select_all">全选</string>
+    <string name="select">选择</string>
+</resources>
