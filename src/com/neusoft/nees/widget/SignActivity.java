@@ -1,26 +1,24 @@
 package com.neusoft.nees.widget;
 
-import it.sephiroth.android.library.imagezoom.utils.DecodeUtils;
-
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import com.neusoft.nees.common.MyApp;
 import com.neusoft.nees.signName.MyView;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,14 +45,20 @@ public class SignActivity extends Activity {
 	boolean isTaskRun;
 	private LinearLayout layout_paint;
 	private MyView myView;
-	private Context context;
+	private Context mContext;
 	private Button btn_save;
 	private Button btn_cancel;
+	private Map datasMap;//传送数据
+	private MyApp myApp;//全局应用,用于获取消息体
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_sign_fragment);
-		context=this;
+		mContext=this;
+		myApp=(MyApp) getApplication();
+		datasMap=myApp.getMap();
+		Log.i("TAG", datasMap.toString());
+		
 		ActionBar actionBar=getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setTitle("客户签名");
@@ -66,7 +70,7 @@ public class SignActivity extends Activity {
 		viewPager.setAdapter(new NavigationPageAdapter());
 		viewPager.setOnPageChangeListener(new NavigationPageChangeListener());
 		layout_paint=(LinearLayout) findViewById(R.id.layout_ver4);
-		myView=new MyView(context);
+		myView=new MyView(mContext);
 		myView.setBackgroundColor(Color.TRANSPARENT);
 		layout_paint.removeAllViews();
 		layout_paint.addView(myView);
@@ -74,10 +78,11 @@ public class SignActivity extends Activity {
 		btn_cancel=(Button) findViewById(R.id.btn_cancel);
 		startTask();
 		btn_save.setOnClickListener(new OnClickListener() {
+			@SuppressWarnings("unchecked")
 			@Override
 			public void onClick(View v) {
 				if(!myView.getSign()){
-					Toast.makeText(context, "没有签名,不允许保存",Toast.LENGTH_SHORT).show();
+					Toast.makeText(mContext, "没有签名,不允许保存",Toast.LENGTH_SHORT).show();
 				}else{
 					String str="";
 					try {
@@ -91,13 +96,13 @@ public class SignActivity extends Activity {
 					String[] md5Str = {mess[2]};
 					String filePath = mess[3].substring(1, mess[3].length());			
 					String[] pathStr = {filePath};
-//					if("ok".equals(flag)){
-//						Uri imageUri = Uri.parse(filePath);
-//						final int size = -1; // use the original image size
-//						Bitmap bitmap = DecodeUtils.decode(context, imageUri, size, size );
-//						imageView.setImageBitmap(bitmap);
-//					}
-					Toast.makeText(context, "图片保存成功", Toast.LENGTH_LONG).show();
+					datasMap.put("MD5Str", md5Str);
+					datasMap.put("FilePath", pathStr);
+					datasMap.put("Data","");
+					datasMap.put("flag", "send");
+					datasMap.put("BoardcastType","nees.signName");
+					Toast.makeText(mContext, message,Toast.LENGTH_SHORT).show();
+					Toast.makeText(mContext, "图片保存成功", Toast.LENGTH_LONG).show();
 				}
 			}
 		});
@@ -105,7 +110,7 @@ public class SignActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				layout_paint.removeAllViews();
-				myView=new MyView(context);
+				myView=new MyView(mContext);
 				layout_paint.addView(myView);
 			}
 		});

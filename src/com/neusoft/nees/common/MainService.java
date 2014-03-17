@@ -2,6 +2,7 @@ package com.neusoft.nees.common;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
@@ -172,7 +173,9 @@ public class MainService extends Service {
 								sendBroadCast("nees.signName");
 							} else if ("3".equals(jsoncurrCMD)) {
 								sendBroadCast("nees.signName");
-							} else {
+							}else if ("10".equals(jsoncurrCMD)) {
+								sendBroadCast("nees.autoTakePhoto");
+							}  else {
 								app = (MyApp) getApplication();
 								String BoardcastType = JsonUtil
 										.getRequestJson(jsoncurrCMD)
@@ -299,23 +302,22 @@ public class MainService extends Service {
 				while (ioThreadFlag) {
 					try {
 						if (!client.isConnected()) {
+//							client.connect(remoteAddr);
 							break;
 						}
 
 						app = (MyApp) getApplication();
-						Map map = app.getMap();
+						final Map map = app.getMap();
 						if (!map.isEmpty() && !sendflag(map)) {
 
 							String jsons = JsonUtil.getResponse(map);
-
 							out.write(jsons.getBytes());
 							out.flush();
 
-							Activity a = (Activity) map.get(map
-									.get("BoardcastType"));
-
-							a.finish();
-
+							// Activity a = (Activity) map.get(map
+							// .get("BoardcastType"));
+							//
+							// a.finish();
 							map.clear();
 						}
 

@@ -52,12 +52,12 @@ public class MyView extends View {
 		evevtPoint = new Point();
 		isSign=false;
 		// 底层bitmap与canvas，
-		floorBitmap = Bitmap.createBitmap(800, 800, Bitmap.Config.ARGB_8888);
+		floorBitmap = Bitmap.createBitmap(900, 800, Bitmap.Config.ARGB_8888);
 		floorCanvas = new Canvas(floorBitmap);
 
 		
 		// 表面bitmap。置于底层bitmap之上，用于赋值绘制当前的所画的图形；需要设置为透明，否则覆盖底部bitmap
-		surfaceBitmap = Bitmap.createBitmap(800, 800, Bitmap.Config.ARGB_8888);
+		surfaceBitmap = Bitmap.createBitmap(900, 800, Bitmap.Config.ARGB_8888);
 		surfaceCanvas = new Canvas(surfaceBitmap);
 		surfaceCanvas.drawColor(Color.TRANSPARENT);
 

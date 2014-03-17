@@ -1,9 +1,11 @@
 package com.neusoft.nees.widget;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.neusoft.nees.common.Const;
 import com.neusoft.nees.common.MainService;
 
 import android.os.Bundle;
@@ -139,5 +141,19 @@ public class MainActivity extends Activity {
 			pageIndex = 0;
 		}
 	   viewPager.setCurrentItem(pageIndex, false);// È¡Ïû¶¯»­
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		File file=new File(Const.tempPath);
+		if(file.exists()){
+			File files[]=file.listFiles();
+			for(File f : files){
+				if(f.exists()){
+					f.delete();
+				}
+			}
+		}
 	}
 }

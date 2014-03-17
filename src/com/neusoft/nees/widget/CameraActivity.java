@@ -37,7 +37,7 @@ public class CameraActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		img = (ImageView) findViewById(R.id.img);
-		checkSoftStage();
+		checkSoftStage(Const.imgPath);
 		try {
 			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			String fileName = System.currentTimeMillis() + ".jpg";
@@ -128,10 +128,10 @@ public class CameraActivity extends Activity {
 	/**
 	 * 检测手机是否存在SD卡,网络连接是否打开
 	 */
-	private void checkSoftStage() {
+	private void checkSoftStage(String path) {
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) { // 判断是否存在SD卡
-			File file = new File(Const.imgPath);
+			File file = new File(path);
 			if (!file.exists()) {
 				file.mkdirs();
 			}
